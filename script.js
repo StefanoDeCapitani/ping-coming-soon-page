@@ -9,9 +9,9 @@ function activateFormButton() {
   form.addEventListener("submit", formSubmission);
 }
 
-function deActivateFormButton(){
+function deActivateFormButton() {
   form.removeEventListener("submit", formSubmission);
-  form.addEventListener("submit", function(e){
+  form.addEventListener("submit", function(e) {
     e.preventDefault();
   });
 }
@@ -19,6 +19,7 @@ function deActivateFormButton(){
 function formSubmission(e) {
   e.preventDefault();
   let email = e.srcElement[0];
+
   if (email.validity.patternMismatch || email.value === "") {
     displayError(email);
   } else {
@@ -31,11 +32,21 @@ function formSubmission(e) {
 }
 
 function displayError(email) {
+  if (email.value === "") {
+    errorMessage.innerHTML = "Whoops! It looks like you forgot to add your email";
+    addInvalidClass(email);
+  } else {
+    errorMessage.innerHTML = "Please provide a valid email address";
+    addInvalidClass(email);
+  }
+}
+
+function addInvalidClass(email) {
   errorMessage.classList.add("invalid");
   email.classList.add("invalid");
 }
 
-function openSuccessWindow(email){
+function openSuccessWindow(email) {
   deActivateFormButton();
   successMessage.style.display = "grid";
   email.value = "";
