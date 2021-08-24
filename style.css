@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;600;700&display=swap');
+
+/*===============================
+Table of contents:
+A: Mobile
+  1. Global styles
+  2. Typography
+===============================*/
+/*----------- 1. Global Styles -----------*/
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /*Primary*/
+  --blue: hsl(223, 87%, 63%);
+  /*Secondary*/
+  --pale-blue: hsl(223, 100%, 88%);
+  --light-red: hsl(354, 100%, 66%);
+  /*Neutral*/
+  --gray: hsl(0, 0%, 59%);
+  --very-dark-blue: hsl(209, 33%, 12%);
+  font-family: 'Libre Franklin', sans-serif;
+  font-size: 20px;
+}
+
+body {
+  min-height: 100vh;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/*----------- 2. Typography -----------*/
+h1 {
+  font-size: clamp(1rem, 5vw, 2.5rem);
+  font-weight: 300;
+  color: var(--gray);
+  margin-bottom: calc(1.1rem - 0.6vw);
+  text-align: center;
+}
+
+h1 strong {
+  color: black;
+}
+
+p {
+  font-size: clamp(0.7rem, 2vw, 1rem);
+  text-align: center;
+}
+
+input::placeholder, input, button {
+  font-size: clamp(0.8rem, 3vw, 1rem);
+}
+
+input::placeholder {
+  color: var(--pale-blue) !important;
+}
+
+form p {
+  font-size: clamp(0.6rem, 2vw, 0.9rem);
+  color: var(--light-red);
+}
+
+button {
+  color: white;
+}
+
+footer p {
+  font-size: clamp(0.6rem, 2vw, 0.9rem);
+  color: var(--gray);
+}
+
+.attribution {
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-size: 11px;
+}
+
+.attribution a {
+  color: var(--blue);
+}
+
+/*------------- 3. Layout -------------*/
+main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+img.logo {
+  width: clamp(3rem, 10vw, 5rem);
+  margin: 2rem;
+}
+
+form {
+  width: min(100%, 30rem);
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+img.illustration {
+  width: 100%;
+  max-width: 30rem;
+  margin-top: 4rem;
+}
+
+footer {
+  width: 100%;
+  margin-top: 3rem;
+  display: grid;
+  place-items: center;
+}
+
+footer a {
+  text-decoration: none;
+}
+
+.social {
+  display: flex;
+}
+
+.logo_social {
+  width: clamp(1.6rem, 5vw, 2.5rem);
+  height: clamp(1.6rem, 5vw, 2.5rem);
+  margin: 1rem 0.3rem;
+  border: 1px solid var(--pale-blue);
+  font-size: clamp(0.8rem, 3vw, 1rem);
+  border-radius: 50%;
+  color: var(--blue);
+  display: grid;
+  place-items: center;
+}
+
+input, button {
+  padding-top: clamp(0.6rem, 2vw, 0.9rem);
+  padding-bottom: clamp(0.6rem, 2vw, 0.9rem);
+  border-radius: 2rem;
+  flex-basis: 100%;
+  box-shadow: 0 0 0.3rem var(--pale-blue);
+}
+
+input {
+  position: relative;
+  padding-left: clamp(0.8rem, 3vw, 1.1rem);
+  border: 1px solid var(--pale-blue);
+  caret-color: var(--blue);
+}
+
+input:focus {
+  outline-style: none;
+}
+
+input.invalid {
+  border: 1px solid var(--light-red);
+  box-shadow: 0 0 0.3rem var(--light-red);
+}
+
+form p.invalid {
+  display: inline-block;
+}
+
+form p {
+  width: 100%;
+  text-align: center;
+  display: none;
+}
+
+input:hover, button:hover, .logo_social:hover {
+  cursor: pointer;
+}
+
+button {
+  border: none;
+  background: var(--blue);
+}
+
+button:hover {
+  background: hsl(224, 86%, 70%);
+}
+
+.logo_social:hover {
+  background: var(--blue);
+  border: 1px solid var(--blue);
+  color: white;
+}
+
+.message {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(13rem, 35vw, 18rem);
+  height: 8rem;
+  padding: 1rem;
+  background: hsl(0, 0%, 92%);
+  border-radius: 0.5rem;
+  box-shadow: 0 0.1rem 0.5rem var(--gray);
+  place-items: center;
+  display: none;
+}
+
+.message p {
+  line-height: 1.8rem;
+  width: 20ch;
+}
+
+.message div {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+}
+
+.message div:hover {
+  color: var(--gray);
+  cursor: pointer;
+}
+
+@media screen and (min-width: 30em) {
+  input {
+    flex-basis: 67%;
+  }
+
+  form p {
+    text-align: left;
+    padding-left: clamp(0.8rem, 3vw, 1.1rem);
+    padding-top: 0.1rem;
+    order: 3;
+    display: none;
+  }
+
+  button {
+    flex-basis: 30%;
+  }
+}
